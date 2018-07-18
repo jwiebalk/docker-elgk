@@ -21,6 +21,7 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash/config/types.db:/usr/share/logstash/types.db:ro
     ports:
       - "5000:5000"
       - "1062:162/udp"
@@ -39,6 +40,16 @@ services:
       - ./kibana/config/:/usr/share/kibana/config:ro
     ports:
       - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  grafana:
+    build:
+      context: grafana/
+    ports:
+      - "3000:3000"
     networks:
       - elk
     depends_on:
