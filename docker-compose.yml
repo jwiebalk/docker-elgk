@@ -25,7 +25,7 @@ services:
     ports:
       - "5000:5000"
       - "1062:162/udp"
-      - "25826:25826/udp"
+      - "25828:25826/udp"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
@@ -33,12 +33,24 @@ services:
     depends_on:
       - elasticsearch
 
+  collectd:
+    build:
+      context: collectd/
+    ports:
+      - "25826:25826/udp"
+      - "8125:8125/udp"
+    networks:
+      - elk
+
   graphite:
     build:
       context: graphite/
+    volumes:
+      - ./graphite/config/carbon.conf:/etc/graphite-statsd/conf/opt/graphite/conf/carbon.conf:ro
+      - ./graphite/config/carbon.conf:/opt/graphite/conf/carbon.conf:ro
     ports:
-      - "2003:2003"
-      - "8125:8125/udp"
+      - "2003:2003/udp"
+      - "8128:8125/udp"
       - "8089:80"
       - "8126:8126"
     networks:
