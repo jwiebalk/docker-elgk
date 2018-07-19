@@ -33,6 +33,17 @@ services:
     depends_on:
       - elasticsearch
 
+  graphite:
+    build:
+      context: graphite/
+    ports:
+      - "2003:2003"
+      - "8125:8125/udp"
+      - "8089:80"
+      - "8126:8126"
+    networks:
+      - elk
+
   kibana:
     build:
       context: kibana/
