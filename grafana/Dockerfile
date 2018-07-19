@@ -1,5 +1,2 @@
-# https://github.com/elastic/kibana-docker
+# https://github.com/grafana/grafana
 FROM grafana/grafana
-
-# Add your kibana plugins setup here
-# Example: RUN kibana-plugin install <name|url>
