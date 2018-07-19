@@ -1,10 +1,9 @@
-# Docker ELK stack
+# Docker ELGKGC stack
 
 Original configs are from https://github.com/deviantony/docker-elk but this has collectD and Grafana also enabled.
 
-[![Elastic Stack version](https://img.shields.io/badge/ELK-6.2.4-blue.svg?style=flat)](https://github.com/deviantony/docker-elk/issues/266)
 
-Run the latest version of the ELK (Elasticsearch, Logstash, Kibana, Grafana) stack with Docker and Docker Compose.
+Run the latest version of the ELK (Elasticsearch, Logstash, Kibana, Grafana, Graphite, CollectD) stack with Docker and Docker Compose.
 
 It will give you the ability to analyze any data set by using the searching/aggregation capabilities of Elasticsearch
 and the visualization power of Kibana or Grafana.
@@ -15,7 +14,8 @@ Based on the official Docker images:
 * [logstash](https://github.com/elastic/logstash-docker)
 * [kibana](https://github.com/elastic/kibana-docker)
 * [grafana](https://github.com/grafana/grafana)
-
+* [graphite](https://github.com/graphiteapp/graphite-statsd)
+* [collectD](https://github.com/jwiebalk/docker-collectd-receiver)(Not based on official image)
 
 ## Contents
 
