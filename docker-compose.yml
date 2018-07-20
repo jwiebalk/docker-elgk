@@ -23,6 +23,7 @@ services:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
       - ./logstash/config/types.db:/usr/share/logstash/types.db:ro
+      - logstash-volume:/usr/share/logstash/data
     ports:
       - "5000:5000"
       - "1062:162/udp"
@@ -51,6 +52,7 @@ services:
     volumes:
       - ./graphite/config/carbon.conf:/etc/graphite-statsd/conf/opt/graphite/conf/carbon.conf:ro
       - ./graphite/config/carbon.conf:/opt/graphite/conf/carbon.conf:ro
+      - graphite-volume:/var/lib/carbon/
     ports:
       - "2003:2003/udp"
       - "8128:8125/udp"
@@ -89,6 +91,10 @@ volumes:
   collectd-volume:
     driver: local
   elasticsearch-volume:
+    driver: local
+  logstash-volume:
+    driver: local
+  graphite-volume:
     driver: local
 
 networks:
