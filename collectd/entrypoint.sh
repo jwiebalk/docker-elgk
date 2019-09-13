@@ -4,7 +4,7 @@ set -eo pipefail
 
 sleep 5
 
-sed -i "s/{{HOSTNAME}}/$HOSTNAME/g" $basedir/etc/collectd.conf
-sed -i "s:{{basedir}}:$basedir:g" $basedir/etc/collectd.conf
+sed -i "s/{{HOSTNAME}}/$HOSTNAME/g" /etc/collectd/collectd.conf
+sed -i "s:{{basedir}}:$basedir:g" /etc/collectd/collectd.conf
 
-exec $basedir/sbin/collectd -f
+exec /usr/sbin/collectd -f
